@@ -1,1 +1,1 @@
-WBS = new Meteor.Collection('wbs');
+Wbs = new Meteor.Collection('wbs');
