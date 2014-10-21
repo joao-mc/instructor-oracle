@@ -1,5 +1,3 @@
-Template.layout.wbsSource(function () {
-    return Wbs.find({modifier: false}).fetch().map(function (obj) {
-        return obj.abbrev;
-    });
+Meteor.typeahead('input#wbsSearch', function(){
+    return Wbs.find({modifier: false}).fetch().map(function(wbsItem){ return wbsItem.abbrev; });
 });
