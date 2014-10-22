@@ -18,13 +18,22 @@ Template.layout.rendered = function () {
 Template.layout.events({
 
     // catch submit event for wbs form
-    'submit': function (event) {
+    'submit': function (event, template) {
 
         // prevent default behavior and stop bubbling
         event.preventDefault();
         event.stopPropagation();
 
-        // be proud of it actually working
-        console.log('Submitting form!');
+        // store dom element in variable
+        var inputElement = template.find('input#wbsSearch');
+
+        // access value in form
+        var wbsObject = Wbs.findOne({abbrev: inputElement.value});
+
+        // report wbs code
+        console.log(wbsObject.code);
+
+        // clear input
+        inputElement.value = "";
     }
 });
