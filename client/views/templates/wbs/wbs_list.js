@@ -1,5 +1,5 @@
 Template.wbsList.helpers({
     wbsItems: function(){
-        return Wbs.find();
+        return Wbs.find({}, {sort: {abbrev: 1}});
     }
 });

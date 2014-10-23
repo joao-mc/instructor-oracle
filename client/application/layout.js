@@ -30,10 +30,10 @@ Template.layout.events({
         // access value in form
         var wbsObject = Wbs.findOne({abbrev: inputElement.value});
 
-        // report wbs code
-        console.log(wbsObject.code);
-
         // clear input
         inputElement.value = "";
+
+        // go to the page
+        Router.go('wbs', {_wbsAbbrev: wbsObject.abbrev});
     }
 });
