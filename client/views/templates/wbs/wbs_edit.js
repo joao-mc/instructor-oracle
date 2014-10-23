@@ -1,10 +1,10 @@
 // TODO figure out how to hide delete button when creating a new record
 // on load and dom render finish
-//Template.wbsEdit.rendered = function(template){
-//    if (!template.data == null){
-//        template.find('#btnDelete').visible = false;
-//    }
-//};
+Template.wbsEdit.rendered = function(){
+    if (this.data == null){
+        template.find('#btnDelete').hide();
+    }
+};
 
 // event handler
 Template.wbsEdit.events({

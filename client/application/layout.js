@@ -27,13 +27,15 @@ Template.layout.events({
         // store dom element in variable
         var inputElement = template.find('input#wbsSearch');
 
-        // access value in form
-        var wbsObject = Wbs.findOne({abbrev: inputElement.value});
+        // TODO add code verification
+        // access value in form and extract abbreviation if found
+        var abbrev = Wbs.findOne({abbrev: (inputElement.value).toUpperCase()}).abbrev;
 
         // clear input
         inputElement.value = "";
 
+        // TODO figure out how to navigate to new code when already on route
         // go to the page
-        Router.go('wbs', {_wbsAbbrev: wbsObject.abbrev});
+        Router.go('wbs', {_wbsAbbrev: abbrev});
     }
 });
