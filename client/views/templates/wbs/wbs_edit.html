@@ -1,0 +1,64 @@
+<template name="wbsEdit">
+    <form class="form-horizontal" role="form">
+
+        <div class="form-group">
+            <label for="inputAbrev" class="col-sm-2 control-label">Abbreviation</label>
+
+            <div class="col-sm-1">
+                <input type="text" class="form-control" id="inputAbbrev" placeholder="AGBS" value="{{abbrev}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputCode" class="col-sm-2 control-label">Code</label>
+
+            <div class="col-sm-1">
+                <input type="text" class="form-control" id="inputCode" placeholder="C0665" value="{{code}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputDesc" class="col-sm-2 control-label">Description</label>
+
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="inputDesc"
+                       placeholder="Course title or BRIEF task description" value="{{desc}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="inputIsCourse" value="{{course}}"> Is this a course?
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="inputIsModifier" value="{{modifier}}"> Is this a course modifier?
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <a class="btn btn-primary" id="#btnCancel" href="{{pathFor 'wbsList'}}">
+                    <span class="glyphicon glyphicon-record"></span> Cancel
+                </a>
+                <button type="submit" class="btn btn-success" id="#btnSave">
+                    <span class="glyphicon glyphicon-ok-circle"></span> Save
+                </button>
+                <button type="submit" class="btn btn-danger" id="#btnDelete">
+                    <span class="glyphicon glyphicon-ok-circle"></span> Delete
+                </button>
+            </div>
+        </div>
+
+    </form>
+</template>

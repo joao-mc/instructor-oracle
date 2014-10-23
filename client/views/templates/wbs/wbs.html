@@ -1,0 +1,15 @@
+<template name="wbs">
+
+    <div class="col-sm-3" id="wbsCol">
+        {{> yield 'wbs-detail'}}
+    </div>
+
+    <div class="col-sm-9" id="timesheetCol">
+        <iframe src="http://www.selfservice.esri.com/etc/cfdocs" id="timesheetFrame"></iframe>
+    </div>
+
+    {{#contentFor 'wbs-detail'}}
+        <h1>{{abbrev}} <small>{{code}}</small></h1>
+    {{/contentFor}}
+
+</template>

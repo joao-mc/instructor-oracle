@@ -30,8 +30,11 @@
                     </div>
                     <button type="submit" class="btn btn-default">Find</button>
                 </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{pathFor 'wbsList'}}">Code List</a></li>
+                    <li><a href="{{pathFor 'wbsEdit' _wbsAbbrev=null}}">Add New</a></li>
+                </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </nav>
     </header>
     <main class="container-fluid">

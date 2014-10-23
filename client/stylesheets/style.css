@@ -5,6 +5,21 @@ nav.navbar{
     margin-top: 20px;
 }
 
-h1, h2, h3, h4, h5, h6, .navbar-brand {
+h1, h2, h3, h4, h5, h6, .navbar-brand, #bs-navbar-collapse {
     font-family: "Special Elite", "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial", sans-serif;
+}
+
+iframe#timesheetFrame {
+    border-radius: 5px;
+    width: 890px;
+    height: 600px;
+}
+
+.btn-wbs-edit {
+    cursor: pointer;
+    text-align: right;
+}
+
+.btn-wbs-edit:hover {
+    text-underline-mode: none;
 }
