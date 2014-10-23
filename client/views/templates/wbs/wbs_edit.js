@@ -9,28 +9,14 @@
 // event handler
 Template.wbsEdit.events({
 
-    // function to check status of event and modifier values
-    checkCourseModifier: function (elementCourse, elementModifier) {
-
-        // if course is checked, uncheck modifier
-        if (elementCourse.checked) {
-            elementModifier.checked = false;
-        }
-
-        // if modifier is checked, uncheck course
-        if (elementModifier.checked) {
-            elementCourse.checked = false;
-        }
-    },
-
     // check for checkbox mutual exclusivity when course checkbox changes
     'change #inputIsCourse': function (event, template) {
-        this.checkCourseModifier(template.find('#inputIsCourse'), template.find('#inputIsModifier'));
+        template.find('#inputIsModifier').checked = false;
     },
 
     // check for checkbox mutual exclusivity when modifier checkbox changes
     'change #inputIsModifier': function (event, template) {
-        this.checkCourseModifier(template.find('#inputIsCourse'), template.find('#inputIsModifier'));
+        template.find('#inputIsCourse').checked = false;
     },
 
     // submit event
