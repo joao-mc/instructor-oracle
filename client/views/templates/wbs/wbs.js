@@ -1,18 +1,51 @@
-// Wait until the template is rendered so the element exists to infect typeahed with
-Template.layout.rendered = function () {
+// function for populating typeahead
+var goTypeahead = function() {
+
+    // get a list of abbreviations for typeahead
+    var wbsList = Wbs.find({modifier: false}).fetch().map(function (wbsItem) {
+        return wbsItem.abbrev;
+    }).sort();
 
     // call method to infect with typeahead
     Meteor.typeahead('input#wbsSearch', function () {
 
-        // create list of abbreviations
-        var wbsList = Wbs.find({modifier: false}).fetch().map(function (wbsItem) {
-            return wbsItem.abbrev;
-        });
-
         // return the sorted list
-        return wbsList.sort();
+        return wbsList;
     });
 };
+
+// execute when the template first loads
+Template.layout.rendered = function(){
+
+    Meteor.setTimeout(function(){
+
+        // initially hide the wbs search alert and set the focus to the search input
+        this.$('#wbsSearchAlert').hide();
+        this.$('#wbsSearch').focus();
+
+        // infect with typeahead
+        goTypeahead();
+
+    }, 0);
+};
+
+// execute when this template loads from using navigation menu
+Router.onAfterAction(function () {
+
+    // for some reason, have to put this in the set timeout or the dom will not have loaded yet
+    setTimeout(function () {
+
+        // initially hide the wbs search alert and set the focus to the search input
+        this.$('#wbsSearchAlert').hide();
+        this.$('#wbsSearch').focus();
+
+        // infect with typeahead
+        goTypeahead();
+
+    }, 0);
+
+    // only apply to the wbs route
+}, {only: ['wbs']});
 
 // manage event handlers for form
 Template.layout.events({
@@ -40,6 +73,6 @@ Template.layout.events({
 });
 
 // helper working with session variables
-Handlebars.registerHelper('currentWbs',function(){
+Template.registerHelper('currentWbs', function () {
     return Session.get('currentWbs');
 });
