@@ -29,13 +29,17 @@ Template.layout.events({
 
         // TODO add code verification
         // access value in form and extract abbreviation if found
-        var abbrev = Wbs.findOne({abbrev: (inputElement.value).toUpperCase()}).abbrev;
+        var wbs = Wbs.findOne({abbrev: (inputElement.value).toUpperCase()});
 
         // clear input
         inputElement.value = "";
 
-        // TODO figure out how to navigate to new code when already on route
-        // go to the page
-        Router.go('wbs', {_wbsAbbrev: abbrev});
+        // set new wbs
+        Session.set('currentWbs', wbs);
     }
+});
+
+// helper working with session variables
+Handlebars.registerHelper('currentWbs',function(){
+    return Session.get('currentWbs');
 });

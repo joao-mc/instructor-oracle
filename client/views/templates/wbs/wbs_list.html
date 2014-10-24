@@ -3,17 +3,23 @@
         <table class="table table-striped table-condensed">
             <thead>
             <tr>
+                <th></th>
                 <th>Abbreviation</th>
                 <th>Code</th>
                 <th>Description</th>
                 <th>Course</th>
                 <th>Modifier</th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
             {{#each wbsItems}}
                 <tr>
+                    <td>
+                        <a href="{{pathFor 'wbsEdit' _wbsAbbrev=this.abbrev}}" class="btn-wbs-edit"
+                           data-toggle="tooltip" data-placement="right" title="edit {{abbrev}}">
+                            <span class="glyphicon glyphicon-edit"></span>
+                        </a>
+                    </td>
                     <td>
                         {{abbrev}}
                     </td>
@@ -21,12 +27,6 @@
                     <td>{{desc}}</td>
                     <td>{{course}}</td>
                     <td>{{modifier}}</td>
-                    <td>
-                        <a href="{{pathFor 'wbsEdit' _wbsAbbrev=this.abbrev}}" class="btn-wbs-edit"
-                           data-toggle="tooltip" data-placement="left" title="edit {{abbrev}}">
-                            <span class="glyphicon glyphicon-edit"></span>
-                        </a>
-                    </td>
                 </tr>
             {{/each}}
             </tbody>

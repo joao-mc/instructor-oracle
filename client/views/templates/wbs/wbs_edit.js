@@ -1,12 +1,13 @@
-// TODO figure out how to hide delete button when creating a new record
 // on load and dom render finish
 Template.wbsEdit.rendered = function () {
+
+    // if there is no data provided, it is for new wbs item creation and the delete button should not be visible
     if (!this.data) {
         this.$('#btnDelete').hide();
     }
 };
 
-// event handler
+// event handlers
 Template.wbsEdit.events({
 
     // check for checkbox mutual exclusivity when course checkbox changes

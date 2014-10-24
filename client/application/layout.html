@@ -17,10 +17,21 @@
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-navbar-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{pathFor 'wbs'}}">Timesheet</a></li>
-                        <li><a href="{{pathFor 'wbsList'}}">WBS List</a></li>
-                        <li><a href="{{pathFor 'wbsEdit' _wbsAbbrev=null}}">New Wbs</a></li>
+                    <ul class="nav navbar-nav navbar-left">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Timesheet <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{pathFor 'wbs'}}" class="nav-menu">
+                                    <span class="glyphicon glyphicon-search"></span> WBS Search & Timesheet
+                                </a></li>
+                                <li><a href="{{pathFor 'wbsList'}}" class="nav-menu">
+                                    <span class="glyphicon glyphicon-align-justify"></span> WBS List
+                                </a></li>
+                                <li><a href="{{pathFor 'wbsEdit' _wbsAbbrev=null}}" class="nav-menu">
+                                    <span class="glyphicon glyphicon-plus-sign"></span> New WBS Item
+                                </a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </nav>
