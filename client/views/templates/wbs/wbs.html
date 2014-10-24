@@ -1,6 +1,21 @@
 <template name="wbs">
 
     <div class="col-sm-3" id="wbsCol">
+        <form class="form-inline" role="search" id="wbsSearchForm">
+            <div class="form-group">
+                <input
+                        class="form-control typeahead"
+                        name="wbsSearch"
+                        id="wbsSearch"
+                        type="text"
+                        placeholder="Course or Task"
+                        autocomplete="on"
+                        spellcheck="off"
+                        autofocus="true"
+                        />
+            </div>
+            <button type="submit" class="btn btn-default">Find</button>
+        </form>
         {{> yield 'wbs-detail'}}
     </div>
 

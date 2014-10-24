@@ -11,7 +11,8 @@ h1, h2, h3, h4, h5, h6, .navbar-brand, #bs-navbar-collapse {
 
 iframe#timesheetFrame {
     border-radius: 5px;
-    width: 890px;
+    width: 100%;
+    min-width: 890px;
     height: 600px;
 }
 
