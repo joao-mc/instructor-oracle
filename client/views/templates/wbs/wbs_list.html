@@ -21,7 +21,8 @@
                 <td>{{course}}</td>
                 <td>{{modifier}}</td>
                 <td>
-                    <a href="{{pathFor 'wbsEdit' _wbsAbbrev=this.abbrev}}" class="btn-wbs-edit">
+                    <a href="{{pathFor 'wbsEdit' _wbsAbbrev=this.abbrev}}" class="btn-wbs-edit"
+                       data-toggle="tooltip" data-placement="left" title="edit {{abbrev}}">
                         <span class="glyphicon glyphicon-edit"></span>
                     </a>
                 </td>

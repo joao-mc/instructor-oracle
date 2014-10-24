@@ -1,8 +1,8 @@
 // TODO figure out how to hide delete button when creating a new record
 // on load and dom render finish
-Template.wbsEdit.rendered = function(){
-    if (this.data == null){
-        template.find('#btnDelete').hide();
+Template.wbsEdit.rendered = function () {
+    if (!this.data) {
+        this.$('#btnDelete').hide();
     }
 };
 
@@ -27,14 +27,23 @@ Template.wbsEdit.events({
         event.stopPropagation();
 
         // TODO figure out how to account for new record creation...right now _id does not exist, so puking
-        // update if record exists or create new if it does not
-        Wbs.upsert(template.data._id, {
+        // save the values in a variable
+        var thisWbs = {
             abbrev: template.find('#inputAbbrev').value,
             code: template.find('#inputCode').value,
             desc: template.find('#inputDesc').value,
             course: template.find('#inputIsCourse').checked,
             modifier: template.find('#inputIsModifier').checked
-        });
+        };
+
+        // if editing an active record, update the record
+        if (template.data){
+            Wbs.update(template.data._id, thisWbs);
+
+        // otherwise, insert a new one
+        } else {
+            Wbs.insert(thisWbs);
+        }
 
         // return to the list of wbs codes
         Router.go('wbsList');
