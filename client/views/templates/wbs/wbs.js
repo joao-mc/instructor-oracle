@@ -17,18 +17,15 @@ var goTypeahead = function () {
 // execute when the template first loads
 Template.layout.rendered = function () {
 
-    Meteor.setTimeout(function () {
 
-        // initially hide the wbs search alert
-        this.$('#wbsSearchAlert').hide();
-
-        // infect with typeahead
-        goTypeahead();
-
-    }, 0);
+    // initially hide the wbs search alert
+    this.$('#wbsSearchAlert').hide();
 
     // Give it just enough time for the iframe to load. Then steal the focus back.
     Meteor.setTimeout(function () {
+
+        // infect with typeahead
+        goTypeahead();
 
         // set the focus to the search input
         this.$('input#wbsSearch').focus();

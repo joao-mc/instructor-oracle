@@ -27,16 +27,18 @@
         </h1>
         <h1>{{templateHelper}}</h1>
         {{#if currentWbs.course}}
-            <table class=" table table-condensed table-striped">
-                <tbody>
-                {{#each courseModifiers}}
-                    <tr>
-                        <td>{{abbrev}}</td>
-                        <td>{{currentWbs.code}}{{code}}</td>
-                    </tr>
-                {{/each}}
-                </tbody>
-            </table>
+            <div id="wbsTable">
+                <table class=" table table-condensed table-striped">
+                    <tbody>
+                    {{#each courseModifiers}}
+                        <tr>
+                            <td>{{abbrev}}</td>
+                            <td>{{currentWbs.code}}{{code}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
         {{/if}}
 
     </div>
