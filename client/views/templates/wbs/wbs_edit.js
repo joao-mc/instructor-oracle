@@ -4,6 +4,7 @@ Template.wbsEdit.rendered = function () {
     // if there is no data provided, it is for new wbs item creation and the delete button should not be visible
     if (!this.data) {
         this.$('#btnDelete').hide();
+        this.$('input#inputAbbrev').focus();
     }
 };
 
@@ -30,7 +31,7 @@ Template.wbsEdit.events({
         // TODO figure out how to account for new record creation...right now _id does not exist, so puking
         // save the values in a variable
         var thisWbs = {
-            abbrev: template.find('#inputAbbrev').value,
+            abbrev: template.find('#inputAbbrev').value.toUpperCase(),
             code: template.find('#inputCode').value,
             desc: template.find('#inputDesc').value,
             course: template.find('#inputIsCourse').checked,

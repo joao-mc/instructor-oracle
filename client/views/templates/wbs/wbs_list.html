@@ -25,8 +25,16 @@
                     </td>
                     <td>{{code}}</td>
                     <td>{{desc}}</td>
-                    <td>{{course}}</td>
-                    <td>{{modifier}}</td>
+                    <td>
+                        {{#if course}}
+                            <span class="glyphicon glyphicon-ok"></span>
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{#if modifier}}
+                            <span class="glyphicon glyphicon-ok"></span>
+                        {{/if}}
+                    </td>
                 </tr>
             {{/each}}
             </tbody>

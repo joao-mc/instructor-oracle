@@ -1,5 +1,5 @@
 // function for populating typeahead
-var goTypeahead = function() {
+var goTypeahead = function () {
 
     // get a list of abbreviations for typeahead
     var wbsList = Wbs.find({modifier: false}).fetch().map(function (wbsItem) {
@@ -15,9 +15,9 @@ var goTypeahead = function() {
 };
 
 // execute when the template first loads
-Template.layout.rendered = function(){
+Template.layout.rendered = function () {
 
-    Meteor.setTimeout(function(){
+    Meteor.setTimeout(function () {
 
         // initially hide the wbs search alert
         this.$('#wbsSearchAlert').hide();
@@ -25,10 +25,15 @@ Template.layout.rendered = function(){
         // infect with typeahead
         goTypeahead();
 
+    }, 0);
+
+    // Give it just enough time for the iframe to load. Then steal the focus back.
+    Meteor.setTimeout(function () {
+
         // set the focus to the search input
         this.$('input#wbsSearch').focus();
 
-    }, 0);
+    }, 500);
 };
 
 // execute when this template loads from using navigation menu
@@ -43,10 +48,15 @@ Router.onAfterAction(function () {
         // infect with typeahead
         goTypeahead();
 
+    }, 0);
+
+    // Give it just enough time for the iframe to load. Then steal the focus back.
+    Meteor.setTimeout(function () {
+
         // set the focus to the search input
         this.$('input#wbsSearch').focus();
 
-    }, 0);
+    }, 500);
 
     // only apply to the wbs route
 }, {only: ['wbs']});
@@ -65,9 +75,8 @@ Template.layout.events({
         var inputElement = template.find('input#wbsSearch');
         var inputVal = inputElement.value.toUpperCase();
 
-        // TODO add code verification
         // access value in form and extract abbreviation if found
-        var wbsQuery = Wbs.findOne( {abbrev: inputVal.toUpperCase()} );
+        var wbsQuery = Wbs.findOne({abbrev: inputVal.toUpperCase()});
 
         // if the query is not found
         if (!wbsQuery) {
@@ -75,10 +84,13 @@ Template.layout.events({
             // place the invalid query in the session variable
             Session.set('wbsQuery', inputVal);
 
+            // set the current wbs session variable to null
+            Session.set('currentWbs', null);
+
             // show the alert div
             template.$('#wbsSearchAlert').show();
 
-        // if the query is found
+            // if the query is found
         } else {
 
             // hide the query alert
@@ -93,10 +105,17 @@ Template.layout.events({
     }
 });
 
-// helpers for working with session variables
-Template.registerHelper('currentWbs', function () {
-    return Session.get('currentWbs');
-});
-Template.registerHelper('wbsQuery', function() {
-    return Session.get('wbsQuery');
+
+// querying for specific resources and helpers to render in the template
+Template.wbs.helpers({
+    currentWbs: function () {
+        return Session.get('currentWbs');
+    },
+    wbsQuery: function() {
+        return Session.get('wbsQuery');
+    },
+    courseModifiers: function () {
+        return Wbs.find({modifier: true});
+    },
+    testHelper: 'template helper'
 });
