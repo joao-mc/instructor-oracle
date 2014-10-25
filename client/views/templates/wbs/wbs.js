@@ -17,6 +17,8 @@ var goTypeahead = function () {
 // execute when the template first loads
 Template.layout.rendered = function () {
 
+    // disable the input field until typeahead is finished
+    this.$('input#wbsSearch').enabled = false;
 
     // initially hide the wbs search alert
     this.$('#wbsSearchAlert').hide();
@@ -26,6 +28,9 @@ Template.layout.rendered = function () {
 
         // infect with typeahead
         goTypeahead();
+
+        // enable the input field
+        this.$('input#wbsSearch').enabled = true;
 
         // set the focus to the search input
         this.$('input#wbsSearch').focus();
@@ -70,10 +75,12 @@ Template.layout.events({
 
         // store dom element value in variable
         var inputElement = template.find('input#wbsSearch');
-        var inputVal = inputElement.value.toUpperCase();
+
+        // get the input value, to uppercase and trim whitespace
+        var inputVal = inputElement.value.toUpperCase().trim();
 
         // access value in form and extract abbreviation if found
-        var wbsQuery = Wbs.findOne({abbrev: inputVal.toUpperCase()});
+        var wbsQuery = Wbs.findOne({abbrev: inputVal});
 
         // if the query is not found
         if (!wbsQuery) {
@@ -113,6 +120,5 @@ Template.wbs.helpers({
     },
     courseModifiers: function () {
         return Wbs.find({modifier: true});
-    },
-    testHelper: 'template helper'
+    }
 });
