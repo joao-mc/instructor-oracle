@@ -19,12 +19,14 @@ Template.layout.rendered = function(){
 
     Meteor.setTimeout(function(){
 
-        // initially hide the wbs search alert and set the focus to the search input
+        // initially hide the wbs search alert
         this.$('#wbsSearchAlert').hide();
-        this.$('#wbsSearch').focus();
 
         // infect with typeahead
         goTypeahead();
+
+        // set the focus to the search input
+        this.$('input#wbsSearch').focus();
 
     }, 0);
 };
@@ -35,12 +37,14 @@ Router.onAfterAction(function () {
     // for some reason, have to put this in the set timeout or the dom will not have loaded yet
     setTimeout(function () {
 
-        // initially hide the wbs search alert and set the focus to the search input
+        // initially hide the wbs search alert
         this.$('#wbsSearchAlert').hide();
-        this.$('#wbsSearch').focus();
 
         // infect with typeahead
         goTypeahead();
+
+        // set the focus to the search input
+        this.$('input#wbsSearch').focus();
 
     }, 0);
 
@@ -57,22 +61,42 @@ Template.layout.events({
         event.preventDefault();
         event.stopPropagation();
 
-        // store dom element in variable
+        // store dom element value in variable
         var inputElement = template.find('input#wbsSearch');
+        var inputVal = inputElement.value.toUpperCase();
 
         // TODO add code verification
         // access value in form and extract abbreviation if found
-        var wbs = Wbs.findOne({abbrev: (inputElement.value).toUpperCase()});
+        var wbsQuery = Wbs.findOne( {abbrev: inputVal.toUpperCase()} );
+
+        // if the query is not found
+        if (!wbsQuery) {
+
+            // place the invalid query in the session variable
+            Session.set('wbsQuery', inputVal);
+
+            // show the alert div
+            template.$('#wbsSearchAlert').show();
+
+        // if the query is found
+        } else {
+
+            // hide the query alert
+            template.$('#wbsSearchAlert').hide();
+
+            // set the session variable
+            Session.set('currentWbs', wbsQuery);
+        }
 
         // clear input
         inputElement.value = "";
-
-        // set new wbs
-        Session.set('currentWbs', wbs);
     }
 });
 
-// helper working with session variables
+// helpers for working with session variables
 Template.registerHelper('currentWbs', function () {
     return Session.get('currentWbs');
+});
+Template.registerHelper('wbsQuery', function() {
+    return Session.get('wbsQuery');
 });
