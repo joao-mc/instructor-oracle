@@ -29,3 +29,7 @@ iframe#timesheetFrame {
 .btn-wbs-edit:hover {
     text-underline-mode: none;
 }
+
+#copyright {
+    text-align: center;
+}
