@@ -1,0 +1,74 @@
+{
+  "format": "web-program-pre1",
+  "manifest": [
+    {
+      "path": "ef89df9a51abc21fc3b29d92b873d104b56ba4ec.js",
+      "where": "client",
+      "type": "js",
+      "cacheable": true,
+      "url": "/ef89df9a51abc21fc3b29d92b873d104b56ba4ec.js",
+      "size": 440515,
+      "hash": "ef89df9a51abc21fc3b29d92b873d104b56ba4ec"
+    },
+    {
+      "path": "678c2b73fe9b43f1c6ee98d20ed32d3083c81210.css",
+      "where": "client",
+      "type": "css",
+      "cacheable": true,
+      "url": "/678c2b73fe9b43f1c6ee98d20ed32d3083c81210.css?meteor_css_resource=true",
+      "size": 112567,
+      "hash": "678c2b73fe9b43f1c6ee98d20ed32d3083c81210"
+    },
+    {
+      "path": "packages/mizzao_bootstrap-3/bootstrap-3/fonts/glyphicons-halflings-regular.eot",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_bootstrap-3/bootstrap-3/fonts/glyphicons-halflings-regular.eot",
+      "size": 20335,
+      "hash": "f3a9a3b609133c3d21d6b42abbf7f43bd111df72"
+    },
+    {
+      "path": "packages/mizzao_bootstrap-3/bootstrap-3/fonts/glyphicons-halflings-regular.ttf",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_bootstrap-3/bootstrap-3/fonts/glyphicons-halflings-regular.ttf",
+      "size": 41280,
+      "hash": "aafafdc09404c4aa4447d7e898a2183def9cc1b1"
+    },
+    {
+      "path": "packages/mizzao_bootstrap-3/bootstrap-3/fonts/glyphicons-halflings-regular.svg",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_bootstrap-3/bootstrap-3/fonts/glyphicons-halflings-regular.svg",
+      "size": 62927,
+      "hash": "3ef91859cbec165ac97df6957b176f69e8d6a04d"
+    },
+    {
+      "path": "packages/mizzao_bootstrap-3/bootstrap-3/fonts/glyphicons-halflings-regular.woff",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/packages/mizzao_bootstrap-3/bootstrap-3/fonts/glyphicons-halflings-regular.woff",
+      "size": 23320,
+      "hash": "22037a3455914e5662fa51a596677bdb329e2c5c"
+    },
+    {
+      "path": "app/images/pepeLePew.png",
+      "where": "client",
+      "type": "asset",
+      "cacheable": false,
+      "url": "/images/pepeLePew.png",
+      "size": 9143,
+      "hash": "59b245291fda13ccb0d68941a1f39770b86600f1"
+    },
+    {
+      "path": "head.html",
+      "where": "internal",
+      "type": "head",
+      "hash": "3950281a040d12e07afbcc8c1b0094d3d18c4fdb"
+    }
+  ]
+}
